@@ -1,106 +1,126 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(const FigmaToCodeApp());
+}
+
+class FigmaToCodeApp extends StatefulWidget {
+  const FigmaToCodeApp({super.key});
+
+  @override
+  State<FigmaToCodeApp> createState() => _FigmaToCodeAppState();
+}
+
+class _FigmaToCodeAppState extends State<FigmaToCodeApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
+      ),
+      home: const Scaffold(
+        body: Login(),
+      ),
+    );
+  }
+}
+
 class Login extends StatelessWidget {
   const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    final size = MediaQuery.of(context).size; // tamaño de pantalla
 
-    final double horizontalPadding = screenWidth * 0.05; // 5% de padding horizontal
-    final double inputHeight = screenHeight * 0.07; // 7% de altura de input
-    final double buttonHeight = screenHeight * 0.08;
-
-    return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SizedBox(height: screenHeight * 0.05),
-          Container(
-            height: screenHeight * 0.08,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color(0xFF0067C2),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Text(
-              'Login',
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: const Color(0xFF0088FF),
+        borderRadius: BorderRadius.circular(0), // sin bordes redondeados en pantalla completa
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: size.height * 0.1), // espacio arriba dinámico
+            Text(
+              "Login",
               style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w400,
                 color: Colors.black,
+                fontSize: size.width * 0.08, // responsivo
+                fontWeight: FontWeight.w600,
               ),
             ),
-          ),
-          SizedBox(height: screenHeight * 0.05),
-          const Text('Email:', style: TextStyle(fontSize: 16)),
-          SizedBox(height: 5),
-          Container(
-            height: inputHeight,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(color: Colors.black, width: 1),
+            const SizedBox(height: 40),
+
+            // Email
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text("Email:",
+                  style: TextStyle(color: Colors.black, fontSize: 16)),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: const TextField(
+            const SizedBox(height: 8),
+            TextField(
               decoration: InputDecoration(
-                border: InputBorder.none,
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: screenHeight * 0.03),
-          const Text('Password:', style: TextStyle(fontSize: 16)),
-          SizedBox(height: 5),
-          Container(
-            height: inputHeight,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(color: Colors.black, width: 1),
+            const SizedBox(height: 30),
+
+            // Password
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text("Password:",
+                  style: TextStyle(color: Colors.black, fontSize: 16)),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: const TextField(
+            const SizedBox(height: 8),
+            TextField(
               obscureText: true,
               decoration: InputDecoration(
-                border: InputBorder.none,
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: screenHeight * 0.05),
-          SizedBox(
-            height: buttonHeight,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF212121),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-              ),
-              onPressed: () {},
-              child: const Text(
-                'LOGIN',
-                style: TextStyle(fontSize: 16, letterSpacing: 1.25),
-              ),
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.03),
-          SizedBox(
-            height: buttonHeight,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF212121),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-              ),
-              onPressed: () {},
-              child: const Text(
-                'REGISTRARSE',
-                style: TextStyle(fontSize: 16, letterSpacing: 1.25),
+            const SizedBox(height: 40),
+
+            // Botón Login
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF212121),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
+                onPressed: () {},
+                child: const Text("LOGIN"),
               ),
             ),
-          ),
-          SizedBox(height: screenHeight * 0.05),
-        ],
+            const SizedBox(height: 20),
+
+            // Botón Registrarse
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF212121),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
+                onPressed: () {},
+                child: const Text("REGISTRARSE"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

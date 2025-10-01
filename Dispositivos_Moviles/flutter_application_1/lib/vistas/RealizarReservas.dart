@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class RealizarReservas extends StatelessWidget {
+class RealizarReservas extends StatefulWidget {
   const RealizarReservas({super.key});
 
+  @override
+  State<RealizarReservas> createState() => _RealizarReservasState();
+}
+
+class _RealizarReservasState extends State<RealizarReservas> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;

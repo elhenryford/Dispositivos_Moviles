@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class VerListaDeReservasDeUnaHabitacion extends StatelessWidget {
+class VerListaDeReservasDeUnaHabitacion extends StatefulWidget {
   const VerListaDeReservasDeUnaHabitacion({super.key});
 
+  @override
+  State<VerListaDeReservasDeUnaHabitacion> createState() => _VerListaDeReservasDeUnaHabitacionState();
+}
+
+class _VerListaDeReservasDeUnaHabitacionState extends State<VerListaDeReservasDeUnaHabitacion> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

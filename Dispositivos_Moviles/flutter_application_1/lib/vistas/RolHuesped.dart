@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class RolHuesped extends StatelessWidget {
+class RolHuesped extends StatefulWidget {
   const RolHuesped({super.key});
 
+  @override
+  State<RolHuesped> createState() => _RolHuespedState();
+}
+
+class _RolHuespedState extends State<RolHuesped> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size; // pantalla dinámica

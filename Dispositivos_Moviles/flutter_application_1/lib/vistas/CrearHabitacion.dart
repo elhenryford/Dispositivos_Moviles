@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CrearHabitacion extends StatelessWidget {
+class CrearHabitacion extends StatefulWidget {
   const CrearHabitacion({super.key});
 
+  @override
+  State<CrearHabitacion> createState() => _CrearHabitacionState();
+}
+
+class _CrearHabitacionState extends State<CrearHabitacion> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

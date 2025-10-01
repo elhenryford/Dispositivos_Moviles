@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class RegistrarUsuario extends StatelessWidget {
+class RegistrarUsuario extends StatefulWidget {
   const RegistrarUsuario({super.key});
 
+  @override
+  State<RegistrarUsuario> createState() => _RegistrarUsuarioState();
+}
+
+class _RegistrarUsuarioState extends State<RegistrarUsuario> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

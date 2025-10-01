@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DatosReserva extends StatelessWidget {
+class DatosReserva extends StatefulWidget {
   const DatosReserva({super.key});
 
+  @override
+  State<DatosReserva> createState() => _DatosReservaState();
+}
+
+class _DatosReservaState extends State<DatosReserva> {
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;

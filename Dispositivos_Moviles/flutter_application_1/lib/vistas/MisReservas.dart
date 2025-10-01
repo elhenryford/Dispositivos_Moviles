@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-class MisReservas extends StatelessWidget {
+class MisReservas extends StatefulWidget {
   const MisReservas({super.key});
 
+  @override
+  State<MisReservas> createState() => _MisReservasState();
+}
+
+class _MisReservasState extends State<MisReservas> {
   @override
   Widget build(BuildContext context) {
     // Medidas de la pantalla

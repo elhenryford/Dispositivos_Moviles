@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class RolAdministrador extends StatelessWidget {
+class RolAdministrador extends StatefulWidget {
   const RolAdministrador({super.key});
 
+  @override
+  State<RolAdministrador> createState() => _RolAdministradorState();
+}
+
+class _RolAdministradorState extends State<RolAdministrador> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
