@@ -9,11 +9,8 @@ class ListarHabitaciones extends StatefulWidget {
 
 class _ListarHabitacionesState extends State<ListarHabitaciones> {
   final List<String> imagenes = [
-    'assets/images/foto1.jpg',
-    'assets/images/foto2.jpg',
-    'assets/images/foto3.jpg',
-    'assets/images/foto4.jpg',
-  ];
+    'assets/images/foto1.jpg' ]
+   ;
 
   @override
   Widget build(BuildContext context) {

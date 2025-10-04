@@ -8,6 +8,8 @@ class CrearHabitacion extends StatefulWidget {
 }
 
 class _CrearHabitacionState extends State<CrearHabitacion> {
+  String? _opcionSeleccionada; // para RadioButtons
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -16,18 +18,18 @@ class _CrearHabitacionState extends State<CrearHabitacion> {
 
     return Container(
       width: double.infinity,
-      height: h, // Ocupa todo el alto de la pantalla
+      height: h,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
-        color: const Color(0xFF0088FF), // Fondo celeste ocupa toda la pantalla
+        color: const Color(0xFF0088FF), // Fondo azul
         borderRadius: BorderRadius.circular(30),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: ListView(
         children: [
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             'Crear Habitación',
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: w * 0.08,
               fontWeight: FontWeight.w400,
@@ -35,7 +37,7 @@ class _CrearHabitacionState extends State<CrearHabitacion> {
               color: Colors.black,
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           // Imagen/preview
           Container(
@@ -46,7 +48,7 @@ class _CrearHabitacionState extends State<CrearHabitacion> {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
 
           // SUBIR FOTO
           Row(
@@ -81,23 +83,20 @@ class _CrearHabitacionState extends State<CrearHabitacion> {
               ),
             ],
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
 
           // Campos de texto
           _campoTexto(context, 'Número:'),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           _campoTexto(context, 'Precio:'),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
-          // Opciones
-          _opcion(context, 'Doble', const Color(0xFF15FF00)),
-          SizedBox(height: 8),
-          _opcion(context, 'Mono Ambiente'),
-          SizedBox(height: 8),
-          _opcion(context, 'Suit'),
-          SizedBox(height: 8),
-          _opcion(context, 'Wifi'),
-          SizedBox(height: 24),
+          // Opciones con radio buttons
+          _radioOpcion('Doble'),
+          _radioOpcion('Mono Ambiente'),
+          _radioOpcion('Suit'),
+          _radioOpcion('Wifi'),
+          const SizedBox(height: 24),
 
           // Botón enviar
           SizedBox(
@@ -107,7 +106,9 @@ class _CrearHabitacionState extends State<CrearHabitacion> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF212121),
               ),
-              onPressed: () {},
+              onPressed: () {
+                // acción al enviar
+              },
               child: const Text(
                 'ENVIAR',
                 style: TextStyle(
@@ -123,6 +124,7 @@ class _CrearHabitacionState extends State<CrearHabitacion> {
     );
   }
 
+  // Campo de texto (Número / Precio)
   Widget _campoTexto(BuildContext context, String label) {
     final w = MediaQuery.of(context).size.width;
     return Row(
@@ -148,23 +150,40 @@ class _CrearHabitacionState extends State<CrearHabitacion> {
     );
   }
 
-  Widget _opcion(BuildContext context, String texto, [Color color = const Color(0xFF0067C2)]) {
+  // Opción con RadioButton
+  Widget _radioOpcion(String texto) {
     final w = MediaQuery.of(context).size.width;
     return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       width: w * 0.85,
-      height: 40,
+      height: 45,
       decoration: BoxDecoration(
-        color: color,
+        color: const Color(0xFF0067C2),
         borderRadius: BorderRadius.circular(10),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      alignment: Alignment.centerLeft,
-      child: Text(
-        texto,
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 17,
-        ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              texto,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 17,
+              ),
+            ),
+          ),
+          Radio<String>(
+            value: texto,
+            groupValue: _opcionSeleccionada,
+            activeColor: Colors.green, // verde cuando se selecciona
+            onChanged: (value) {
+              setState(() {
+                _opcionSeleccionada = value;
+              });
+            },
+          ),
+        ],
       ),
     );
   }

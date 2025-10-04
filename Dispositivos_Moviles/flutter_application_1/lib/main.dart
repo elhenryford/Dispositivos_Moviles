@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/vistas/ListarHabitaciones.dart';
+import 'package:flutter_application_1/vistas/CrearHabitacion.dart';
+//import 'package:flutter_application_1/vistas/ListarHabitaciones.dart';
 //import 'package:flutter_application_1/vistas/Login.dart';
 //import 'package:flutter_application_1/vistas/MisReservas.dart';
 //import 'package:flutter_application_1/vistas/RealizarReservas.dart';
@@ -24,8 +25,8 @@ class FigmaToCodeApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
       ),
-      home: const Scaffold(
-        body:ListarHabitaciones(),
+      home: Scaffold(
+        body:CrearHabitacion()
       ),
     );
   }
